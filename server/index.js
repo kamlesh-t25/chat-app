@@ -10,9 +10,10 @@ dotenv.config();
 
 const PORT=process.env.PORT  || 8080;
 
-
+console.log(process.env.FRONTEND_URL);
 app.use(cors({
     origin:process.env.FRONTEND_URL,
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials:true
 }));
 
