@@ -11,12 +11,18 @@ dotenv.config();
 const PORT=process.env.PORT  || 8080;
 
 console.log(process.env.FRONTEND_URL);
-app.use(cors({
-    origin:process.env.FRONTEND_URL,
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials:true
-}));
+// app.use(cors({
+//     origin:process.env.FRONTEND_URL,
+//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//     credentials:true
+// }));
 
+app.use(cors({
+    origin: '*', // Allow all origins
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allowed methods
+    allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+    credentials: true // Allow credentials (cookies, authorization headers, etc.)
+  }));
 connectDB();
 
 app.use(express.json());//important for req.body to destructure
