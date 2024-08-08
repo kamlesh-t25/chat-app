@@ -24,6 +24,8 @@ app.use(cors({
     credentials: true // Allow credentials (cookies, authorization headers, etc.)
   }));
 
+// Handle preflight (OPTIONS) requests explicitly if needed
+app.options('*', cors());
 
 await connectDB();
 
