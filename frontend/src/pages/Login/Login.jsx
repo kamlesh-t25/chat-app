@@ -2,8 +2,11 @@ import React ,{useState} from 'react'
 import './Login.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { setToken } from '../../redux/userSlice';
 
 const Login = ({URL}) => {
+    const dispatch=useDispatch();
     const navigate=useNavigate();
     const [data,setData]=useState({
         // name:"",
@@ -22,8 +25,9 @@ const Login = ({URL}) => {
         // console.log(data);
         const response=await axios.post(URL+"/chat-app/user/login",data);
         if(response.data.success){
-            // console.log(response.data.token);
+            console.log(response.data.token);
             localStorage.setItem("token",response.data.token);
+            // dispatch(setToken(response.data.token));
             navigate("/");
         }else{
             console.log(response.data.message);

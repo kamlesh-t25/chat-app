@@ -7,7 +7,7 @@ import Register from './pages/Register/Register';
 import Login from './pages/Login/Login';
 import Home from './pages/Home/Home';
 function App() {
-  const URL="http://localhost:8000";
+  const URL=import.meta.env.VITE_REACT_APP_BACKEND_URL;
 
 
   return (
@@ -17,7 +17,7 @@ function App() {
           <Route path='/'  element={<Home/>} />
           <Route path='/register' element={<Register URL={URL}/>} />
           <Route path='/login' element={<Login URL={URL}/>} />
-          <Route path='*'  element={<Home/>} />
+          <Route path='/:userId'  element={<Home/>} />
         </Routes>
       </Router>
     </main>

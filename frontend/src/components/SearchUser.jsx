@@ -43,7 +43,7 @@ const SearchUser = ({onClose}) => {
                     }
             </div>
         </div>
-        <div onClick={onClose} className='absolute text-2xl lg:text-4xl hover:text-green-600 right-0 top-0 p-2 m-2 '>
+        <div onClick={onClose} className='absolute text-2xl lg:text-4xl text-green-600 hover:text-red-900 cursor-pointer right-0 top-0 p-2 m-2 '>
             <IoClose size={25}/>
         </div>
 

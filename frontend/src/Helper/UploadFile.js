@@ -1,9 +1,9 @@
-const url=`https://api.cloudinary.com/v1_1/dbtolytse/auto/upload`;
+const url=`https://api.cloudinary.com/v1_1/${import.meta.env.VITE_CLODINARY_CLOUD_NAME}/auto/upload`;
 import axios from 'axios';
 // import dotenv from 'dotenv'
 // dotenv.config();
 
-// console.log("process.env.CLODINARY_CLOUD_NAME",import.meta.process.env.VITE_CLODINARY_CLOUD_NAME);
+// console.log("process.env.CLODINARY_CLOUD_NAME",import.meta.env.VITE_CLODINARY_CLOUD_NAME);
 
 const uploadFile=async(file)=>{
     const formData=new FormData();

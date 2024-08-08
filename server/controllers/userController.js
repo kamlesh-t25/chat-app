@@ -57,6 +57,9 @@ const getUserDetails=async(req,res)=>{
     const token=req.body.token;
 
     try {
+        if(!token){
+            return res.json({success:false,message:"Token not found"});
+        }
         const decode=await jwt.verify(token.toString(),process.env.SECRET_KEY);
         // console.log(decode);
         const userDetails=await userModel.findById(decode.id).select('-password');
@@ -65,6 +68,16 @@ const getUserDetails=async(req,res)=>{
         console.log(error);
         res.json({success:false,message:"Error"});
     }
+}
+
+const getUserUsingToken=async(token)=>{
+        if(!token){
+            return {message:"TOken not found"};
+        }
+        const decode=await jwt.verify(token.toString(),process.env.SECRET_KEY);
+        // console.log(decode);
+        const userDetails=await userModel.findById(decode.id).select('-password');
+        return userDetails;
 }
 
 
@@ -108,4 +121,4 @@ const getAllUser=async(req,res)=>{
 }
 
 
-export {registerUser,loginUser,getUserDetails,updateUserDetails,getAllUser};
+export {registerUser,loginUser,getUserDetails,updateUserDetails,getAllUser,getUserUsingToken};
