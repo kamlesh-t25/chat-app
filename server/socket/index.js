@@ -10,12 +10,14 @@ const app=express();
 
 // socket connection 
 const server=http.createServer(app);
-app.use(cors({
-    origin: '*', // Allow all origins
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allowed methods
-    allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
-    credentials: true // Allow credentials (cookies, authorization headers, etc.)
-  }));
+const io=new Server(server,{
+    cors:{
+        origin: '*', // Allow all origins
+        methods: ['GET', 'POST'],
+        allowedHeaders: ['Content-Type'],
+        credentials: true // Allow credentials (optional, depending on your needs)
+    }
+})
 
 // * socket running at http://localhost:8080/*
 const onlineUser=new Set();
