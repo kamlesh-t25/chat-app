@@ -23,7 +23,9 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
     credentials: true // Allow credentials (cookies, authorization headers, etc.)
   }));
-connectDB();
+
+
+await connectDB();
 
 app.use(express.json());//important for req.body to destructure
 
